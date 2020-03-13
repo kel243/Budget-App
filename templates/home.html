@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Project 4 Budget Manager</title>
+		<title>Budget Manager</title>
 		<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 		<link href={{url_for('static', filename = 'style.css')}} type='text/css' rel='stylesheet'/>
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet"> 
 	</head>
 	<body>
-		<h1 id="title">Project 4 Budget Manager</h1>
-		<h1>Create New Category</h1>
-		<form name="categories">
-			<span>Category Name</span><br />
-			<input type="text" id="newCat" name="" value="" ><br />
-			<span>Budget limit</span><br />
-			<input type="type" id="limit" name="" value=""><br />
-			<input type="button" id="addCat" value="Add"><br />
-		</form>
-
-		<h1>Budget Overview</h1>
-		<table id="catTable" cellpadding="10"></table>
-		<h2 id="noCat">Non-Categorized Spending:</h2>
-
-		<h1>Add New Purchase</h1>
-		<form name="purchases">
-			<span>Purchase Name</span><br />
-			<input type="text" id="newPurchase" name="" value="" ><br />
-			<span>Purchase Cost</span><br />
-			<input type="type" id="cost" name="" value=""><br />
-			<span>Date of Purchase</span><br />
-			<input type="date" id="date" name="" value=""><br />
-			<span>Category</span><br />
-			<select id="cat" name="" value=""><br />
-			<input type="button" id="addPurchase" value="Add"><br />
-		</form>
-
-		<h1>Purchase List</h1>
-		<table id="purchaseTable" cellpadding="10"></table>
-
+		<div class="page-container">
+			<div class="title-container">
+				<h1 id="title">Budget Manager</h1>
+				<p id='month'></p>
+			</div>
+			<div class="new-cat-container">
+				<h1>Create New Category</h1>
+				<form name="categories">
+					<span>Category Name</span><br />
+					<input class='form-inputs' type="text" id="newCat" name="" value="" ><br />
+					<span>Budget limit</span><br />
+					<input class='form-inputs' type="type" id="limit" name="" value=""><br />
+					<input class='btn' type="button" id="addCat" value="Add"><br />
+				</form>
+			</div>
+			<div class="overview-container">
+				<h1 id="budget">Budget Overview</h1>
+				<table id="catTable" cellpadding="10"></table>
+				<h2 id="noCat">Non-Categorized Spending:</h2>
+			</div>
+			<div class="new-purch-container">
+				<h1 id="new-purch">Add New Purchase</h1>
+				<form name="purchases">
+					<span>Purchase Name</span><br />
+					<input class='form-inputs' type="text" id="newPurchase" name="" value="" ><br />
+					<span>Purchase Cost</span><br />
+					<input class='form-inputs'type="type" id="cost" name="" value=""><br />
+					<span>Date of Purchase</span><br />
+					<input class='form-inputs'type="date" id="date" name="" value=""><br />
+					<span>Category</span><br />
+					<select id="cat" name="" value=""><br />
+					<input class='btn' type="button" id="addPurchase" value="Add"><br />
+				</form>
+			</div>
+			<div class="purch-container">
+				<h1 id="purch">Purchase List</h1>
+				<table id="purchaseTable" cellpadding="10"></table>
+			</div>
+		</div>
 	</body>
 </html>

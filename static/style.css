@@ -1,73 +1,136 @@
-body{
-	font-size: 15px;
-	border: 1px solid black;
-	margin: 1% 30%;
-	padding-bottom: 5px;
+body {
+  font-size: 15px;
+  margin: 1% 30%;
+  padding-bottom: 5px;
+  font-family: "Roboto Mono", monospace;
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(241, 241, 241, 0.7),
+      rgba(241, 241, 241, 0.7)
+    ),
+    url("./background.jpg");
+  background-size: cover;
+}
+
+.page-container {
+  box-shadow: 1px 1px 8px grey;
+  background-color: white;
 }
 
 form,
 h1,
 h2 {
-	text-align: center;
+  text-align: center;
 }
 
-h2{
-	font-size: 15px;
+h3 {
+  font-size: 15px;
 }
 
-h1#title{
-	border-bottom: 1px solid black;
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
+p#month {
+  color: rgb(241, 241, 241);
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+  padding: 5px 0;
 }
 
-
-table{
-	margin-left: auto;
-	margin-right: auto;
-	border-collapse:collapse;
+h1#title {
+  margin: 0;
+  color: rgb(241, 241, 241);
 }
 
-input{
-	margin-bottom: 10px;
-	margin-top: 3px;
-	text-align: center;
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+
+input {
+  margin-bottom: 10px;
+  margin-top: 3px;
+  text-align: center;
 }
 
 #deletePurch,
 #deleteCat {
-	margin-left: 20px;
+  margin-left: 20px;
 }
 
 select {
-	display: block;
-	margin: 3px auto 10px;
-	width: 140px;
-	text-align: center;
+  display: block;
+  margin: 3px auto 10px;
+  width: 140px;
+  text-align: center;
 }
 
-input#date{
-	width:140px;
-	text-align: center;
+input#date {
+  width: 140px;
+  text-align: center;
 }
 
 #addCat,
-#addPurchase{
-	width: 80px;
+#addPurchase {
+  width: 80px;
 }
 
-tr.titles td{
-	border-bottom: 1px solid black;
+tr:hover {
+  background-color: rgb(241, 241, 241);
+}
+
+tr.titles td {
+  border-bottom: 1px solid black;
 }
 
 tr.purchases td:nth-child(1n):not(:last-child),
-tr.cats td:nth-child(1n):not(:last-child){
-	text-align: center;
-	border-bottom: 1px solid #b5b5b5;
-	
+tr.cats td:nth-child(1n):not(:last-child) {
+  text-align: center;
+  border-bottom: 1px solid #b5b5b5;
 }
 
+.new-cat-container,
+.overview-container,
+.new-purch-container,
+.purch-container {
+  padding: 8px 0;
+}
 
+.new-cat-container,
+.overview-container,
+.new-purch-container {
+  border-bottom: 2px solid #ffd868;
+  width: 60%;
+  margin: 0 auto;
+}
 
+.title-container {
+  padding: 2rem;
+  background-color: #721b65;
+}
 
+.form-inputs {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 2px;
+}
+
+.btn {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #f8615a;
+  color: rgb(241, 241, 241);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #f77d77;
+}
+
+.btn-delete {
+  background-color: #b80d57;
+}
+
+.btn-delete:hover {
+  background-color: rgb(128, 26, 70);
+}
