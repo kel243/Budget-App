@@ -1,212 +1,141 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-h1 {
-  text-align: center;
-}
-
 body {
+  font-size: 15px;
+  padding: 5px 0;
+  font-family: "Roboto Mono", monospace;
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(241, 241, 241, 0.7),
+      rgba(241, 241, 241, 0.7)
+    ),
+    url("./background.jpg");
+  background-size: cover;
+}
+
+.page-container {
+  box-shadow: 1px 1px 8px grey;
+  background-color: white;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+form,
+h1,
+h2 {
   text-align: center;
-  font-size: 1.1rem;
-  color: #888888;
-  font-family: "Sen", sans-serif;
 }
 
-p.error {
-  color: red;
+h3 {
+  font-size: 15px;
 }
 
-ul {
-  list-style: none;
-}
-
-ul.messages {
-  list-style: none;
+p#month {
+  color: rgb(241, 241, 241);
+  text-align: center;
+  font-size: 2rem;
   margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+  padding: 5px 0;
 }
 
-li {
-  padding: 0 10px;
-  display: block;
+h1#title {
+  margin: 0;
+  color: rgb(241, 241, 241);
 }
 
-ul.messages li {
-  width: 100%;
-  display: block;
-  background: #dcf5f2;
-  border: 1px solid white;
-  border-radius: 10px;
-  text-align: left;
-  padding: 5px;
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
 }
 
-ul.messages li#user {
-  background: #356efc;
-  border: 1px solid white;
-  color: white;
-}
-
-ul.messages li#empty {
-  height: 35px;
+input {
+  margin-bottom: 10px;
+  margin-top: 3px;
   text-align: center;
-  padding-top: 15px;
 }
 
-button#delete {
-  margin: 5px;
+#deletePurch,
+#deleteCat {
+  margin-left: 5px;
 }
 
-span.author {
-  font-weight: bold;
+select {
+  display: block;
+  margin: 3px auto 10px;
+  width: 140px;
+  text-align: center;
 }
 
-input#text {
-  width: 100%;
-  padding: 4px 4px;
-  box-sizing: border-box;
+input#date {
+  width: 140px;
+  text-align: center;
 }
 
-.login-container,
-.register-container {
-  padding-top: 5rem;
-  height: 100vh;
-  width: 100vw;
-  background-image: linear-gradient(rgb(42, 206, 198), rgb(72, 248, 239));
+#addCat,
+#addPurchase {
+  width: 80px;
 }
 
-@media only screen and (max-width: 600px) {
-  .login-container,
-  .register-container {
-    padding-top: 2rem;
-  }
+tr:hover {
+  background-color: rgb(241, 241, 241);
 }
 
-.form-container {
-  background-color: white;
+tr.titles td {
+  border-bottom: 1px solid black;
+}
+
+tr.purchases td:nth-child(1n):not(:last-child),
+tr.cats td:nth-child(1n):not(:last-child) {
+  text-align: center;
+  border-bottom: 1px solid #b5b5b5;
+}
+
+.new-cat-container,
+.overview-container,
+.new-purch-container,
+.purch-container {
+  padding: 8px 0;
+}
+
+.new-cat-container,
+.overview-container,
+.new-purch-container {
+  margin: 0 auto;
+}
+
+.title-container {
   padding: 2rem;
-  max-width: 30rem;
-  margin: 0 auto;
+  background-color: #721b65;
+}
+
+.form-inputs {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 2px;
+}
+
+.btn {
+  border: none;
+  padding: 5px 10px;
   border-radius: 5px;
-  box-shadow: 1px 1px 8px #888888;
-}
-
-.form-heading {
-  margin-bottom: 3rem;
-  color: black;
-}
-
-.form {
-  width: 50%;
-  margin: 0 auto;
-}
-
-.form-label {
-  display: block;
-  text-align: left;
-  margin-bottom: 0.5rem;
-}
-
-.form-input {
-  border: none;
-  width: 100%;
-  border-bottom: 1px solid #888888;
-  padding: 3px 2px;
-  margin-bottom: 2rem;
-}
-
-.form-btn {
-  font-size: 1.1rem;
-  border: none;
-  background-color: rgb(42, 206, 198);
-  color: white;
-  width: 8.5rem;
-  padding: 0.5rem 0;
-  border-radius: 2rem;
+  background-color: #f8615a;
+  color: rgb(241, 241, 241);
   cursor: pointer;
-  transition: all 0.2s ease-in;
 }
 
-.form-btn:hover {
-  background-color: rgb(31, 165, 158);
+.btn:hover {
+  background-color: #f77d77;
 }
 
-.home-heading {
-  color: black;
+.btn-delete {
+  background-color: #b80d57;
 }
 
-.room-input {
-  border: none;
-  width: 12rem;
-  border-bottom: 1px solid #888888;
-  padding: 3px 2px;
-  margin-bottom: 5px;
-  font-size: 1.1rem;
+.btn-delete:hover {
+  background-color: rgb(128, 26, 70);
 }
 
-.logout-btn,
-.delete-btn {
-  border: none;
-  font-size: 1.1rem;
-  background-color: white;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border-radius: 5px;
-  padding: 2px 7px;
-}
-
-.logout-btn:hover {
-  background-color: rgb(42, 206, 198);
-  color: white;
-}
-
-.delete-btn:hover {
-  background-color: red;
-  color: white;
-}
-
-.room-links {
-  display: block;
-  margin: 2px auto;
-  text-decoration: none;
-  border-radius: 5px;
-  color: black;
-  border: 1px solid black;
-  width: 13rem;
-  padding: 4px 0;
-}
-
-.room-links:hover {
-  background-color: rgb(42, 206, 198);
-  color: white;
-}
-
-.chat-container {
-  background-color: white;
-  max-width: 38rem;
-  margin: 0 auto;
-  border-radius: 5px;
-  box-shadow: 1px 1px 8px #888888;
-  padding: 1rem 3rem;
-}
-
-.msg-container {
-  overflow: auto;
-  height: 30rem;
-  margin-bottom: 1rem;
-}
-
-.msg-input {
-  width: 100%;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-  overflow: auto;
-  resize: vertical;
-  border: solid 1px #888888;
-  padding: 3px;
+@media only screen and (max-width: 500px) {
+  tr {
+    font-size: 12px;
+  }
 }
