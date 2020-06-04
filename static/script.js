@@ -15,7 +15,7 @@ const monthNames = [
   "September",
   "October",
   "November",
-  "December"
+  "December",
 ];
 
 function setup() {
@@ -190,9 +190,9 @@ function repopulateCat(responseText) {
     delButton.type = "button";
     delButton.id = "deleteCat";
     delButton.className = "btn btn-delete";
-    delButton.value = "Delete " + cats[i].name;
-    (function(_i) {
-      delButton.addEventListener("click", function() {
+    delButton.value = "Delete";
+    (function (_i) {
+      delButton.addEventListener("click", function () {
         deleteCat(cats[_i].cat_id);
       });
     })(i);
@@ -233,9 +233,9 @@ function repopulatePurch(responseText) {
     delButton.type = "button";
     delButton.id = "deletePurch";
     delButton.className = "btn btn-delete";
-    delButton.value = "Delete " + purchases[i].name;
-    (function(_i) {
-      delButton.addEventListener("click", function() {
+    delButton.value = "Delete";
+    (function (_i) {
+      delButton.addEventListener("click", function () {
         deletePurch(purchases[_i].purchase_id);
       });
     })(i);
@@ -253,10 +253,10 @@ function calculate() {
   }
   var i = 0;
   var catNames = [];
-  cats.forEach(function(e) {
+  cats.forEach(function (e) {
     e.remaining = e.limit;
     purchases.map(
-      x =>
+      (x) =>
         (e.remaining = x.cat === e.name ? (e.remaining -= x.cost) : e.remaining)
     );
     // Formatting the remaining budget output based on if its negative or positive
@@ -273,7 +273,7 @@ function calculate() {
   var spent = 0;
   // Calculations for non-categorized spending
   purchases.map(
-    x => (spent = catNames.indexOf(x.cat) === -1 ? (spent += x.cost) : spent)
+    (x) => (spent = catNames.indexOf(x.cat) === -1 ? (spent += x.cost) : spent)
   );
   document.getElementById("noCat").innerHTML =
     "Uncategorized Expenditures: $" + spent;
