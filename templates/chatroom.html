@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename='chat.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='delete.js') }}"></script>
+	</head>
+
+	<body>
+		<div class="register-container">
+			<div class="chat-container">
+				{% if g.user %}
+					<form action='/logout'>
+						<button class='logout-btn' type="submit">Logout</button>
+					</form>	
+				{% endif %}
+				{% if error %} <p class="error">{{ error }}</p> {% endif %}
+				<h2 class='home-heading'>Welcome to {{ chatroom.name }}!</h2>
+				<div id="chat">
+					<div class="msg-container">
+						<ul id="msgs" class="messages">
+							{% for message in messages %}
+								{% if message.author == g.user.username %}
+									<li id="user"><p><span class="author">{{ message.author }}: </span>{{ message.text }}
+								{% else %}
+									<li id="other"><p><span class="author">{{ message.author }}: </span>{{ message.text }}
+								{% endif %}
+							{% else %}
+								<li id="empty"><em>There is no messages currently!</em>
+							{% endfor %}
+						</ul>
+					</div>
+					<form name="form" onSubmit="return false;">
+						<input type="hidden" id="author" value="{{ g.user.username }}">
+						<input type="hidden" id="chatname" value="{{ chatroom.name }}">
+						<input type="hidden" id="chat_id" value="{{ chatroom.chatroom_id }}">
+						<textarea class='msg-input' type="text" id="text"></textarea>
+						<button class='form-btn' id="btn" type="submit">Submit</button>
+					</form>
+				</div>
+				<form action='/'>
+					<br>
+					<button class='logout-btn' type="submit">Leave Room</button>
+				</form>	
+			</div>
+		</div>
+{% endblock %}
+
+
+	
+		

@@ -1,1 +1,1 @@
-web: gunicorn budget:app
+web: gunicorn chat:app

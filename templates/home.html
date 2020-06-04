@@ -1,52 +1,39 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Budget Manager</title>
-		<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
-		<link href={{url_for('static', filename = 'style.css')}} type='text/css' rel='stylesheet'/>
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet"> 
-	</head>
-	<body>
-		<div class="page-container">
-			<div class="title-container">
-				<h1 id="title">Budget Manager</h1>
-				<p id='month'></p>
-			</div>
-			<div class="new-cat-container">
-				<h1>Create New Category</h1>
-				<form name="categories">
-					<span>Category Name</span><br />
-					<input class='form-inputs' type="text" id="newCat" name="" value="" ><br />
-					<span>Budget limit</span><br />
-					<input class='form-inputs' type="type" id="limit" name="" value=""><br />
-					<input class='btn' type="button" id="addCat" value="Add"><br />
-				</form>
-			</div>
-			<div class="overview-container">
-				<h1 id="budget">Budget Overview</h1>
-				<table id="catTable" cellpadding="10"></table>
-				<h2 id="noCat">Non-Categorized Spending:</h2>
-			</div>
-			<div class="new-purch-container">
-				<h1 id="new-purch">Add New Purchase</h1>
-				<form name="purchases">
-					<span>Purchase Name</span><br />
-					<input class='form-inputs' type="text" id="newPurchase" name="" value="" ><br />
-					<span>Purchase Cost</span><br />
-					<input class='form-inputs'type="type" id="cost" name="" value=""><br />
-					<span>Date of Purchase</span><br />
-					<input class='form-inputs'type="date" id="date" name="" value=""><br />
-					<span>Category</span><br />
-					<select id="cat" name="" value=""><br />
-					<input class='btn' type="button" id="addPurchase" value="Add"><br />
-				</form>
-			</div>
-			<div class="purch-container">
-				<h1 id="purch">Purchase List</h1>
-				<table id="purchaseTable" cellpadding="10"></table>
-			</div>
-		</div>
-	</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+</head>
 
+	<body>
+		<div class="register-container">
+			<div class="form-container">	
+				{% if g.user %}
+					<form action='/logout'>
+						<button class='logout-btn' type="submit">Logout</button>
+					</form>	
+				{% endif %}
+				{% if error %} <p class="error">{{ error }}</p> {% endif %}
+				<h2 class='home-heading'>Chatrooms online:</h2>
+				{% if rooms != None %}
+					{% for room in rooms %}
+						{% if g.user.user_id == room.creator_id %}	
+							<a class='room-links' href="{{ url_for('chatroom', id=room.chatroom_id) }}">Enter {{ room.name }} Chatroom</a> 
+							<form action="{{ url_for('delete') }}" method="post">
+								<input type="hidden" name="id" value="{{ room.chatroom_id }}">
+								<button class='delete-btn' type="submit" id="delete">Delete {{room.name}}</button>
+							</form>	
+						{% else %}
+							<a class='room-links' href="{{ url_for('chatroom', id=room.chatroom_id) }}">Enter {{ room.name }} Chatroom</a> 
+						{% endif %}
+					{% endfor %}
+				{% else %}
+					<h3>There are no chatrooms to join currently.</h3>
+				{% endif %}
+				<h2 class='home-heading'>Create a New Room</h2>
+				<form method="post" action="">
+					<input type="hidden" name="creator_id" value="{{ g.user.user_id }}">
+					<input class='room-input' type="text" name="name"> 
+					<br>
+					<br>
+					<button class='form-btn' type="submit">Create</button>
+				</form>
+{% endblock %}
+	

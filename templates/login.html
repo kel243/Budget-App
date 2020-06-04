@@ -1,0 +1,29 @@
+
+{% extends "layout.html" %}
+{% block content %}
+</head>
+
+	<body>
+		<div class="login-container">
+			<div class="form-container">
+				<h1 class='form-heading'>Login</h1>
+				{% if error %} <p class="error">{{ error }}</p> {% endif %}
+
+				<form class='form' method="post" action="">
+					
+						<label for="username" class='form-label'>Username</label>
+						<input class='form-input' type="text" name="username">
+						<label for="password" class='form-label'>Password</label>
+						<input class='form-input' type="password" name="password">
+						<button class='form-btn' type="submit">Login</button>
+				</form>
+
+				<form action='/register'>
+						<br>
+						<button class='form-btn' type="submit">Register</button>
+				</form>	
+
+			</div>
+		</div>
+				
+{% endblock %}
